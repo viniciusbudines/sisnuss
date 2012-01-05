@@ -503,11 +503,11 @@ class w2p_Core_CAppUI {
 		if (is_array($str)) {
 			$translated = array();
 			foreach ($str as $s) {
-				$translated[] = $this->__($s, $flags);
+				$translated[] = $this->__(utf8_encode($s), $flags);
 			}
 			return implode(' ', $translated);
 		} else {
-			return $this->__($str, $flags);
+			return $this->__(utf8_encode($str), $flags);
 		}
 	}
 
@@ -1098,7 +1098,8 @@ class w2p_Core_CAppUI {
 		echo '<script type="text/javascript" src="'.$base.'js/base.js"></script>';
 
 		// additionally load jquery
-		echo '<script type="text/javascript" src="'.$base.'lib/jquery/jquery.js"></script>';
+        echo '<script type="text/javascript" src="'.$base.'lib/jquery/jquery.js"></script>';
+		echo '<script type="text/javascript" src="'.$base.'lib/jquery/jqueryui.js"></script>';
 		echo '<script type="text/javascript" src="'.$base.'lib/jquery/jquery.tipTip.js"></script>';
 
 		$this->getModuleJS($m, $a, true);

@@ -622,7 +622,8 @@ function buildHeaderNavigation($AppUI, $rootTag = '', $innerTag = '', $dividingT
   foreach ($nav as $module) {
   	if (canAccess($module['mod_directory'])) {
   		$link = ($innerTag != '') ? "<$innerTag>" : '';
-      $link .= '<a href="?m=' . $module['mod_directory'] . '">' . $AppUI->_($module['mod_ui_name']) . '</a>';
+      //$link .= '<a href="?m=' . $module['mod_directory'] . '">' . $AppUI->_($module['mod_ui_name']) . '</a>';
+      $link .= '<input type="button" class="button" value="'.$AppUI->_($module['mod_ui_name']).'" onclick=\'javascript:window.location="?m=' . $module['mod_directory'] . '"\' />' ;  
       $link .= ($innerTag != '') ? "</$innerTag>" : '';
       $links[] = $link;
   	}

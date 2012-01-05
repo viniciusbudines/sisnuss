@@ -94,7 +94,7 @@ $letters = CContact::getFirstLetters($AppUI->user_id);
 for ($c = 65; $c < 91; $c++) {
 	$cu = chr($c);
 	$cell = !(mb_strpos($letters, $cu) === false) ? '<a href="?m=contacts&search_string=' . $cu . '">' . $cu . '</a>' : '<font color="#999999">' . $cu . '</font>';
-	$a2z .= '<td>' . $cell . '</td>';
+	$a2z .= '<td class="button">' . $cell . '</td>';
 }
 $a2z .= '</tr><tr><td colspan="28">' . $form . '</td></tr></table>';
 
@@ -151,11 +151,11 @@ if (function_exists('styleRenderBoxTop')) {
                                                     <?php
                                                     if ($carr[$z][$x]['user_id']) {
 														echo '<a href="./index.php?m=admin&a=viewuser&user_id=' . $carr[$z][$x]['user_id'] . '" style="float: right;">';
-                                                        echo w2PtoolTip($m, 'This Contact is also a User, click to view its details.') . w2PshowImage('icons/users.gif') . w2PendTip();
+                                                        echo w2PtoolTip($m, 'Esta pessoa também é um usuário.') . w2PshowImage('icons/users.gif') . w2PendTip();
                                                         echo '</a>';
 													}
                                                     ?><a href="?m=contacts&a=vcardexport&suppressHeaders=true&contact_id=<?php echo $contactid; ?>" style="float: right;"><?php
-                                                        echo w2PtoolTip($m, 'export vCard of this contact') . w2PshowImage('vcard.png') . w2PendTip();
+                                                        echo w2PtoolTip($m, 'exportar como vCard') . w2PshowImage('vcard.png') . w2PendTip();
                                                     ?></a>
                                                     <a href="?m=contacts&a=addedit&contact_id=<?php echo $contactid; ?>" style="float: right;"><?php
                                                         echo w2PtoolTip($m, 'edit this contact') . w2PshowImage('icons/pencil.gif') . w2PendTip();
