@@ -369,7 +369,7 @@ if (!$suppressHeaders) {
 		<table width="80" cellpadding="1" cellspacing="1" border="0">
 		<tr>
 			<td>';
-	echo w2PshowImage('ajax-loader.gif', '', '', 'web2Project', 'Server Connection Running, Please wait...');
+	echo w2PshowImage('ajax-loader.gif', '', '', 'sisNUSS', 'Server Connection Running, Please wait...');
 	echo '
 			</td>
 			<td>

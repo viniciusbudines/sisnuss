@@ -23,7 +23,7 @@ class DHTML_Calendar {
 
     function DHTML_Calendar($calendar_lib_path = '/calendar/',
                             $lang              = 'en',
-                            $theme             = 'calendar-win2k-1',
+                            $theme             = 'calendar-brown',
                             $stripped          = true) {
         if ($stripped) {
             $this->calendar_file = 'calendar_stripped.js';

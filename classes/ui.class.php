@@ -385,7 +385,7 @@ class CTitleBlock_core {
 		if (!$uistyle) {
 			$uistyle = 'web2project';
 		}
-		$s = '<table width="100%" border="0" cellpadding="1" cellspacing="1"><tr>';
+		$s = '<table class="modtop" border="0" cellpadding="1" cellspacing="1"><tr>';
 		if ($this->icon) {
 			$s .= '<td width="42">';
 			$s .= w2PshowImage($this->icon, '', '', '', '', $this->module);
