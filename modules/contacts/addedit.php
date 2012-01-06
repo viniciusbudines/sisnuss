@@ -252,17 +252,16 @@ $(document).ready(function() {
         <tr>
             <td>
                 <table border="0" cellpadding="1" cellspacing="1">
-
                 <tr>
-                    <td align="right"><?php echo $AppUI->_('First Name'); ?>:</td>
-                    <td>
-                        <input type="text" class="text" size="25" name="contact_first_name" value="<?php echo $row->contact_first_name; ?>" maxlength="50" />
-                    </td>
+                <td align="right"><?php echo $AppUI->_('First Name'); ?>:</td>
+                <td>
+                <input type="text" class="text" size="25" name="contact_first_name" value="<?php echo $row->contact_first_name; ?>" maxlength="50" />
+                </td>
                 </tr>
                 <tr>
-                    <td align="right">&nbsp;&nbsp;<?php echo $AppUI->_('Last Name'); ?>:</td>
-                    <td>
-                        <input type="text" class="text" size="25" name="contact_last_name" value="<?php echo $row->contact_last_name; ?>" maxlength="50" <?php if ($contact_id == 0) { ?> onBlur="orderByName('name')"<?php } ?> />
+                <td align="right">&nbsp;&nbsp;<?php echo $AppUI->_('Last Name'); ?>:</td>
+                <td>
+                <input type="text" class="text" size="25" name="contact_last_name" value="<?php echo $row->contact_last_name; ?>" maxlength="50" <?php if ($contact_id == 0) { ?> onBlur="orderByName('name')"<?php } ?> />
                         <a href="javascript: void(0);" onclick="orderByName('name')">[<?php echo $AppUI->_('use in display'); ?>]</a>
                     </td>
                 </tr>
@@ -403,8 +402,37 @@ $(document).ready(function() {
                 </table>
             </td>
             <td valign="top" width="50%">
+            <table><tr><td valign=top> 
+            <?
+            $fototemp = $baseDir."/fotos/temp.jpg";
+            if(file_exists($fototemp)) unlink($fototemp); 
+            ?>   
+    <script type="text/javascript" src="<?echo $baseUrl;?>/lib/jpegcam/webcam.js"></script>
+    <script language="JavaScript">
+        webcam.set_api_url( '<?echo $baseUrl;?>/lib/jpegcam/webcam.php' );
+        webcam.set_swf_url( '<?echo $baseUrl;?>/lib/jpegcam/webcam.swf' );
+        webcam.set_quality( 100 );
+        webcam.set_shutter_sound( true, '<?echo $baseUrl;?>/lib/jpegcam/shutter.mp3' );
+    </script> 
+    <script language="JavaScript">
+        document.write( webcam.get_html(320, 240, 640, 480) );
+        webcam.set_hook( 'onComplete', 'my_callback_function' );
+        function my_callback_function(response) {
+            if(response != "sucesso")
+                alert(response);
+        }
+    </script>
+    <br/><form>
+        <input type=button class="botão" value="Capturar" onClick="javascript: webcam.snap();">
+&nbsp;&nbsp;
+        <input type=button class="botão" value="Resetar" onClick="javascript: webcam.reset();"></td>
+    </form>
+    </td><td width=50>&nbsp;</td><td valign=top>
+        <div id="upload_results" style="background-color:#eee;"></div>
+    </td></tr></table>
+<br/>
                 <strong><?php echo $AppUI->_('Contact Notes'); ?></strong><br />
-                <textarea class="textarea" name="contact_notes" rows="20" cols="40"><?php echo $row->contact_notes; ?></textarea>
+                <textarea class="textarea" name="contact_notes" rows="5" cols="40"><?php echo $row->contact_notes; ?></textarea>
             </td>
         </tr>
         <tr>
