@@ -136,6 +136,19 @@ function delIt(){
 		</td>
 		<td>
             <table border="0" cellpadding="1" cellspacing="1">
+                <tr>
+                <?
+                $foto_file = W2P_BASE_DIR.'/fotos/'.$contact_id.'.jpg';
+                $foto = W2P_BASE_URL.'/fotos/'.$contact_id.'.jpg';
+                 if(file_exists($foto_file)) 
+                 $fotostr = '<img src="'.$foto.'" width="150" />';
+                 else
+                 $fotostr = $AppUI->_('Usuário sem foto');
+                 
+                 ?>
+                    <td align="right"><?php echo $AppUI->_('Foto'); ?>:</td>
+                    <td nowrap="nowrap" class="hilite" width="100%"><?php echo  $fotostr; ?></td>
+                </tr>
 				<tr>
 					<td align="right"><?php echo $AppUI->_('Birthday'); ?>:</td>
 					<td nowrap="nowrap" class="hilite" width="100%"><?php echo substr($contact->contact_birthday, 0, 10); ?></td>
