@@ -41,7 +41,8 @@ class CContact extends w2p_Core_BaseObject {
 	public $contact_private = null;
 	public $contact_updatekey = null;
 	public $contact_lastupdate = null;
-	public $contact_updateasked = null;
+    public $contact_updateasked = null;
+	public $contact_foto = null;
 
 	public $contact_methods = array();
 
@@ -114,6 +115,18 @@ class CContact extends w2p_Core_BaseObject {
             $custom_fields = new w2p_Core_CustomFields('contacts', 'addedit', $this->contact_id, 'edit');
             $custom_fields->bind($_POST);
             $sql = $custom_fields->store($this->contact_id); // Store Custom Fields
+        }
+
+        if ($stored) 
+        {
+            $foto = W2P_BASE_DIR.'/fotos/'.$this->contact_id.'.jpg';
+            $foto_temp = W2P_BASE_DIR.'/fotos/temp.jpg';
+            if(file_exists($foto) && file_exists($foto_temp)) unlink($foto);
+            if (file_exists($foto_temp))
+            {
+                rename($foto_temp,$foto);
+                if(file_exists($foto_temp)) unlink($foto_temp);
+            }
         }
 
         /*
